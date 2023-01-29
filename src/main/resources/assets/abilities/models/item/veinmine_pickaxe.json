@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "abilities:item/veinminer_pickaxe"
+  }
+}

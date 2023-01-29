@@ -1,22 +1,11 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "equipment",
-  "key": {
-    "#": {
-      "item": "minecraft:stick"
-    },
-    "X": {
-      "item": "minecraft:diamond"
-    },
-    "Y": {
-      "item": "minecraft:obsidian"
-    }
+  "type": "minecraft:smithing",
+  "addition": {
+    "item": "abilities:vein_miner_ingot"
   },
-  "pattern": [
-    "XXX",
-    "Y#Y",
-    "Y#Y"
-  ],
+  "base": {
+    "item": "minecraft:diamond_pickaxe"
+  },
   "result": {
     "item": "abilities:veinmine_pickaxe"
   }

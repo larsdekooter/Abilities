@@ -3,6 +3,8 @@ package net.kooter.abilities.item.custom;
 import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
 import net.kooter.abilities.veinmine.PlayerVeinmineProvider;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;
@@ -11,12 +13,15 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 
+import java.util.List;
 import java.util.Queue;
 
 public class VeinMineDiggerItem extends DiggerItem {
@@ -136,6 +141,13 @@ public class VeinMineDiggerItem extends DiggerItem {
 
         });
 
+
         return true;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> components, TooltipFlag flag) {
+        components.add(Component.literal("Mines blocks in an 7x7x7 area").withStyle(ChatFormatting.AQUA));
+        super.appendHoverText(stack, level, components, flag);
     }
 }

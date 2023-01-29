@@ -48,6 +48,8 @@ public class AbilitiesMod
             event.accept(ModItems.VEINMINE_SHOVEL);
             // Blocks
 //            event.accept(ModBlocks.ZIRCON_BLOCK);
+        } else if(event.getTab() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(ModItems.VEIN_MINER);
         }
 
     }

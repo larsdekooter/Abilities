@@ -29,6 +29,9 @@ public class ModItems {
             () -> new VeinMineDiggerItem(1, 1, Tiers.DIAMOND, BlockTags.MINEABLE_WITH_HOE,
                     new Item.Properties().stacksTo(1)));
 
+    public static RegistryObject<Item> VEIN_MINER = ITEMS.register("vein_miner_ingot",
+            () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC)));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

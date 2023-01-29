@@ -43,47 +43,49 @@ public class VeinMineDiggerItem extends DiggerItem {
                 queue.add(new Tuple<>(blockPos, 0));
                 BlockState state = level.getBlockState(blockPos);
 
-                while(!queue.isEmpty()) {
+                while (!queue.isEmpty()) {
                     Tuple<BlockPos, Integer> tuple = queue.poll();
                     BlockPos blockpos = tuple.getA();
 
+                    // Loops 3 times
                     for(int vert = 0; vert < RADIUS; vert++) {
-                        BlockPos vertPos = blockPos.below(vert);
+                        BlockPos verPos = blockPos.below(vert);
                         for(int hor = 0; hor < RADIUS; hor++) {
-                            BlockPos horPos = vertPos.east(hor);
-                            if(level.getBlockState(horPos).getBlock().equals(state.getBlock())) {
+                            BlockPos horPos = verPos.north(hor);
+                            if(level.getBlockState(horPos).getBlock().equals(blockBeingMined)) {
                                 level.destroyBlock(horPos, true, livingEntity);
                             }
-                            for(int i = -1; i < RADIUS; i++) {
-                                BlockPos iPos = horPos.north(i);
-                                if(level.getBlockState(iPos).getBlock().equals(state.getBlock())) {
+                            // 0 may need to change to -1
+                            for(int i = 0; i < RADIUS; i++) {
+                                BlockPos iPos = horPos.west(i);
+                                if(level.getBlockState(iPos).getBlock().equals(blockBeingMined)) {
                                     level.destroyBlock(iPos, true, livingEntity);
                                 }
                             }
-                            for(int i = -1; i < RADIUS; i++) {
-                                BlockPos iPos = horPos.south(i);
-                                if(level.getBlockState(iPos).getBlock().equals(state.getBlock())) {
+                            // 0 may need to change to -1
+                            for(int i = 0; i < RADIUS; i++) {
+                                BlockPos iPos = horPos.east(i);
+                                if(level.getBlockState(iPos).getBlock().equals(blockBeingMined)) {
                                     level.destroyBlock(iPos, true, livingEntity);
                                 }
                             }
                         }
-                    }
-                    for(int vert = 0; vert < RADIUS; vert++) {
-                        BlockPos vertPos = blockPos.below(vert);
                         for(int hor = 0; hor < RADIUS; hor++) {
-                            BlockPos horPos = vertPos.west(hor);
-                            if(level.getBlockState(horPos).getBlock().equals(state.getBlock())) {
+                            BlockPos horPos = verPos.south(hor);
+                            if(level.getBlockState(horPos).getBlock().equals(blockBeingMined)) {
                                 level.destroyBlock(horPos, true, livingEntity);
                             }
-                            for(int i = -1; i < RADIUS; i++) {
-                                BlockPos iPos = horPos.south(i);
-                                if(level.getBlockState(iPos).getBlock().equals(state.getBlock())) {
+                            // 0 may need to change to -1
+                            for(int i = 0; i < RADIUS; i++) {
+                                BlockPos iPos = horPos.west(i);
+                                if(level.getBlockState(iPos).getBlock().equals(blockBeingMined)) {
                                     level.destroyBlock(iPos, true, livingEntity);
                                 }
                             }
-                            for(int i = -1; i < RADIUS; i++) {
-                                BlockPos iPos = horPos.north(i);
-                                if(level.getBlockState(iPos).getBlock().equals(state.getBlock())) {
+                            // 0 may need to change to -1
+                            for(int i = 0; i < RADIUS; i++) {
+                                BlockPos iPos = horPos.east(i);
+                                if(level.getBlockState(iPos).getBlock().equals(blockBeingMined)) {
                                     level.destroyBlock(iPos, true, livingEntity);
                                 }
                             }
@@ -91,54 +93,51 @@ public class VeinMineDiggerItem extends DiggerItem {
                     }
 
 
-                }
-
-                for(int vert = 0; vert < RADIUS; vert++) {
-                    BlockPos vertPos = blockPos.above(vert);
-                    for(int hor = 0; hor < RADIUS; hor++) {
-                        BlockPos horPos = vertPos.east(hor);
-                        if(level.getBlockState(horPos).getBlock().equals(state.getBlock())) {
-                            level.destroyBlock(horPos, true, livingEntity);
-                        }
-                        for(int i = -1; i < RADIUS; i++) {
-                            BlockPos iPos = horPos.north(i);
-                            if(level.getBlockState(iPos).getBlock().equals(state.getBlock())) {
-                                level.destroyBlock(iPos, true, livingEntity);
+                    for(int vert = 0; vert < RADIUS; vert++) {
+                        BlockPos verPos = blockPos.above(vert);
+                        for(int hor = 0; hor < RADIUS; hor++) {
+                            BlockPos horPos = verPos.north(hor);
+                            if(level.getBlockState(horPos).getBlock().equals(blockBeingMined)) {
+                                level.destroyBlock(horPos, true, livingEntity);
+                            }
+                            // 0 may need to change to -1
+                            for(int i = 0; i < RADIUS; i++) {
+                                BlockPos iPos = horPos.west(i);
+                                if(level.getBlockState(iPos).getBlock().equals(blockBeingMined)) {
+                                    level.destroyBlock(iPos, true, livingEntity);
+                                }
+                            }
+                            // 0 may need to change to -1
+                            for(int i = 0; i < RADIUS; i++) {
+                                BlockPos iPos = horPos.east(i);
+                                if(level.getBlockState(iPos).getBlock().equals(blockBeingMined)) {
+                                    level.destroyBlock(iPos, true, livingEntity);
+                                }
                             }
                         }
-                        for(int i = -1; i < RADIUS; i++) {
-                            BlockPos iPos = horPos.south(i);
-                            if(level.getBlockState(iPos).getBlock().equals(state.getBlock())) {
-                                level.destroyBlock(iPos, true, livingEntity);
+                        for(int hor = 0; hor < RADIUS; hor++) {
+                            BlockPos horPos = verPos.south(hor);
+                            if(level.getBlockState(horPos).getBlock().equals(blockBeingMined)) {
+                                level.destroyBlock(horPos, true, livingEntity);
+                            }
+                            // 0 may need to change to -1
+                            for(int i = 0; i < RADIUS; i++) {
+                                BlockPos iPos = horPos.west(i);
+                                if(level.getBlockState(iPos).getBlock().equals(blockBeingMined)) {
+                                    level.destroyBlock(iPos, true, livingEntity);
+                                }
+                            }
+                            // 0 may need to change to -1
+                            for(int i = 0; i < RADIUS; i++) {
+                                BlockPos iPos = horPos.east(i);
+                                if(level.getBlockState(iPos).getBlock().equals(blockBeingMined)) {
+                                    level.destroyBlock(iPos, true, livingEntity);
+                                }
                             }
                         }
                     }
                 }
-                for(int vert = 0; vert < RADIUS; vert++) {
-                    BlockPos vertPos = blockPos.below(vert);
-                    for(int hor = 0; hor < RADIUS; hor++) {
-                        BlockPos horPos = vertPos.west(hor);
-                        if(level.getBlockState(horPos).getBlock().equals(state.getBlock())) {
-                            level.destroyBlock(horPos, true, livingEntity);
-                        }
-                        for(int i = -1; i < RADIUS; i++) {
-                            BlockPos iPos = horPos.south(i);
-                            if(level.getBlockState(iPos).getBlock().equals(state.getBlock())) {
-                                level.destroyBlock(iPos, true, livingEntity);
-                            }
-                        }
-                        for(int i = -1; i < RADIUS; i++) {
-                            BlockPos iPos = horPos.north(i);
-                            if(level.getBlockState(iPos).getBlock().equals(state.getBlock())) {
-                                level.destroyBlock(iPos, true, livingEntity);
-                            }
-                        }
-                    }
-                }
-
-
             }
-
         });
 
 
@@ -147,7 +146,7 @@ public class VeinMineDiggerItem extends DiggerItem {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> components, TooltipFlag flag) {
-        components.add(Component.literal("Mines blocks in an 7x7x7 area").withStyle(ChatFormatting.AQUA));
+        components.add(Component.literal("Mines blocks in an 7x7x7 area around the player").withStyle(ChatFormatting.AQUA));
         super.appendHoverText(stack, level, components, flag);
     }
 }

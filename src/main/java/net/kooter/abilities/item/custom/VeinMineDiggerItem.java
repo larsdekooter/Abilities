@@ -87,7 +87,53 @@ public class VeinMineDiggerItem extends DiggerItem {
 
 
                 }
+
+                for(int vert = 0; vert < RADIUS; vert++) {
+                    BlockPos vertPos = blockPos.above(vert);
+                    for(int hor = 0; hor < RADIUS; hor++) {
+                        BlockPos horPos = vertPos.east(hor);
+                        if(level.getBlockState(horPos).getBlock().equals(state.getBlock())) {
+                            level.destroyBlock(horPos, true, livingEntity);
+                        }
+                        for(int i = -1; i < RADIUS; i++) {
+                            BlockPos iPos = horPos.north(i);
+                            if(level.getBlockState(iPos).getBlock().equals(state.getBlock())) {
+                                level.destroyBlock(iPos, true, livingEntity);
+                            }
+                        }
+                        for(int i = -1; i < RADIUS; i++) {
+                            BlockPos iPos = horPos.south(i);
+                            if(level.getBlockState(iPos).getBlock().equals(state.getBlock())) {
+                                level.destroyBlock(iPos, true, livingEntity);
+                            }
+                        }
+                    }
+                }
+                for(int vert = 0; vert < RADIUS; vert++) {
+                    BlockPos vertPos = blockPos.below(vert);
+                    for(int hor = 0; hor < RADIUS; hor++) {
+                        BlockPos horPos = vertPos.west(hor);
+                        if(level.getBlockState(horPos).getBlock().equals(state.getBlock())) {
+                            level.destroyBlock(horPos, true, livingEntity);
+                        }
+                        for(int i = -1; i < RADIUS; i++) {
+                            BlockPos iPos = horPos.south(i);
+                            if(level.getBlockState(iPos).getBlock().equals(state.getBlock())) {
+                                level.destroyBlock(iPos, true, livingEntity);
+                            }
+                        }
+                        for(int i = -1; i < RADIUS; i++) {
+                            BlockPos iPos = horPos.north(i);
+                            if(level.getBlockState(iPos).getBlock().equals(state.getBlock())) {
+                                level.destroyBlock(iPos, true, livingEntity);
+                            }
+                        }
+                    }
+                }
+
+
             }
+
         });
 
         return true;

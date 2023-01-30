@@ -2,6 +2,7 @@ package net.kooter.abilities.item;
 
 import net.kooter.abilities.AbilitiesMod;
 import net.kooter.abilities.item.custom.VeinMineDiggerItem;
+import net.kooter.abilities.item.custom.VeinMinerIngotItem;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -30,7 +31,7 @@ public class ModItems {
                     new Item.Properties().stacksTo(1)));
 
     public static RegistryObject<Item> VEIN_MINER = ITEMS.register("vein_miner_ingot",
-            () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC)));
+            () -> new VeinMinerIngotItem(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

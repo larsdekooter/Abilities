@@ -86,7 +86,6 @@ public class ModEvents {
         Block block = event.player.level.getBlockState(pos).getBlock();
         if(block instanceof BonemealableBlock) {
             if(block instanceof GrassBlock) return;
-            event.player.sendSystemMessage(Component.literal("Block can be mealed"));
             ServerLevel level = (ServerLevel) event.player.level;
             BoneMealItem.applyBonemeal(new ItemStack(Items.BONE_MEAL), level, pos, event.player);
         }

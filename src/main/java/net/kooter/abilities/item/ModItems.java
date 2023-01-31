@@ -1,8 +1,7 @@
 package net.kooter.abilities.item;
 
 import net.kooter.abilities.AbilitiesMod;
-import net.kooter.abilities.item.custom.VeinMineDiggerItem;
-import net.kooter.abilities.item.custom.VeinMinerIngotItem;
+import net.kooter.abilities.item.custom.*;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -19,15 +18,15 @@ public class ModItems {
             , BlockTags.MINEABLE_WITH_PICKAXE, new Item.Properties().stacksTo(1)));
 
     public static RegistryObject<Item> VEINMINE_AXE = ITEMS.register("veinmine_axe",
-            () -> new VeinMineDiggerItem(1, 1, Tiers.DIAMOND, BlockTags.MINEABLE_WITH_AXE,
+            () -> new VeinMineAxeItem(1, 1, Tiers.DIAMOND, BlockTags.MINEABLE_WITH_AXE,
                     new Item.Properties().stacksTo(1)));
 
     public static RegistryObject<Item> VEINMINE_SHOVEL = ITEMS.register("veinmine_shovel",
-            () -> new VeinMineDiggerItem(1, 1, Tiers.DIAMOND, BlockTags.MINEABLE_WITH_SHOVEL,
+            () -> new VeinMineShovelItem(1, 1, Tiers.DIAMOND, BlockTags.MINEABLE_WITH_SHOVEL,
                     new Item.Properties().stacksTo(1)));
 
     public static RegistryObject<Item> VEINMINE_HOE = ITEMS.register("veinmine_hoe",
-            () -> new VeinMineDiggerItem(1, 1, Tiers.DIAMOND, BlockTags.MINEABLE_WITH_HOE,
+            () -> new VeinMineHoeItem(1, 1, Tiers.DIAMOND, BlockTags.MINEABLE_WITH_HOE,
                     new Item.Properties().stacksTo(1)));
 
     public static RegistryObject<Item> VEIN_MINER = ITEMS.register("vein_miner_ingot",
